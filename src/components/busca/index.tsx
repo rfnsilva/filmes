@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import FilmeContext from '../../contexts/filme'
 
 import { Container, Wrapper, Title, Results } from './styles';
 
 const busca: React.FC = () => {
+  const { filmesData } = useContext(FilmeContext);
+
   return (
     <Container>
       <Wrapper>
@@ -11,7 +15,7 @@ const busca: React.FC = () => {
         </Title>
 
         <Results>
-          <a href="#">Filmes</a>
+          <a href="#">Filmes <span>{filmesData?.results.length}</span></a>
           <a href="#">Series</a>
           <a href="#">Pessoas</a>
           <a href="#">Coletânias</a>

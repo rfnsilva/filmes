@@ -42,9 +42,14 @@ export const Results = styled.div`
     cursor: pointer;
     color: ${props => props.theme.colors.text};
     text-decoration: none;
+    justify-content: space-between;
 
     &:hover {
       background-color: #d1d1d1
+    }
+
+    > span {
+      margin-left: 100px
     }
   }
 
