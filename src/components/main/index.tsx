@@ -2,10 +2,8 @@ import React,{ useContext, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-
 import { FilmesResults } from '../../store/ducks/filmes/types';
 import { ApplicationState } from '../../store';
-
 import * as FilmesActions from '../../store/ducks/filmes/actions';
 
 import { Container } from './styles';

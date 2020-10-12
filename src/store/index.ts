@@ -9,7 +9,6 @@ export interface ApplicationState {
   filmes: FilmesState
 }
 
-
 const sagaMiddleware = createSagaMiddleware();
 
 const store: Store<ApplicationState> = createStore(rootReducer, applyMiddleware(sagaMiddleware));
