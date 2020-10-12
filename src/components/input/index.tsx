@@ -1,19 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 
-import FilmeContext from '../../contexts/filme'
 
 import { Container } from './styles';
 
 const input: React.FC = () => {
-  const [ search, setSearch ] = useState(null)
-  const { getFilmes } = useContext(FilmeContext)
+  const [ search, setSearch ] = useState<string>(null)
 
   //subimit form
   const SubmitForm = async () => {
     try{
-      const response = await getFilmes(search)
 
-      console.log(response)
     } catch(error){
       console.log(error)
     }

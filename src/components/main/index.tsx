@@ -1,26 +1,47 @@
-import React,{ useContext, useEffect, useState } from 'react';
+import React,{ useContext, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
-import FilmeContext from '../../contexts/filme'
+
+import { FilmesResults } from '../../store/ducks/filmes/types';
+import { ApplicationState } from '../../store';
+
+import * as FilmesActions from '../../store/ducks/filmes/actions';
 
 import { Container } from './styles';
 import Card from '../card';
 
+interface StateProps {
+  filmesResults: FilmesResults
+}
 
-export default function Main(){
-  const { getPopulares } = useContext(FilmeContext);
+interface DispatchProps {
+  loadRequest(): void
+}
+
+type Props = StateProps & DispatchProps;
+
+const Main = (props: Props) => {
 
   useEffect(() => {
-    async function loadStorageData() {
-      const response = await getPopulares();
-    }
+    const { loadRequest } = props;
 
-    loadStorageData();
+    loadRequest();
+  }, [])
 
-  }, []);
+  const { filmesResults } = props;
 
   return (
     <Container>
-      <Card />
+      <Card filmes={filmesResults?.results} />
     </Container>
   );
 }
+
+const mapStateToProps = (state: ApplicationState) => ({
+  filmesResults: state.filmes.data,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(FilmesActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
