@@ -1,7 +1,7 @@
 import { all, takeLatest } from 'redux-saga/effects';
 
 import { FilmesTypes } from './filmes/types';
-import { load, up } from './filmes/sagas';
+import { load } from './filmes/sagas';
 
 export default function* rootSaga() {
   return yield all([

@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { apiPopulares } from '../../../services/apiPopulares';
+import { apiPopulares } from '../../../services/apis';
 
 import { loadSuccess, loadFailure } from './actions';
 
